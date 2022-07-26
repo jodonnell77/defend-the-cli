@@ -1,0 +1,13 @@
+[package]
+name = "defend-the-cli"
+version = "0.1.0"
+keywords = ["event"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+crossterm = { version = "0.23", features = ["event-stream"] }
+tokio = { version = "1.18.2", features = ["full"] }
+futures = "0.3.21"
+futures-timer = "3.0.2"
