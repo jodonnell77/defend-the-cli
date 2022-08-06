@@ -7,10 +7,10 @@ use futures_timer::Delay;
 use crossterm::{
     ExecutableCommand,
     cursor::position,
-    cursor::{self, MoveLeft, MoveRight, MoveDown, MoveUp, SavePosition, RestorePosition},
+    cursor::{self, MoveTo, MoveLeft, MoveRight, MoveDown, MoveUp, SavePosition, RestorePosition},
     event::{DisableMouseCapture, EnableMouseCapture, Event, EventStream, KeyCode},
     execute,
-    terminal::{disable_raw_mode, enable_raw_mode, size, EnterAlternateScreen, LeaveAlternateScreen},
+    terminal::{disable_raw_mode, enable_raw_mode, size, EnterAlternateScreen, LeaveAlternateScreen, Clear, ClearType},
     Result, QueueableCommand,
     style::{Print}
 };
@@ -127,6 +127,8 @@ async fn print_events() {
             }
         };
     }
+    execute!(stdout, MoveTo(0,0));
+    execute!(stdout, Clear(ClearType::All));
 }
 
 #[tokio::main]
